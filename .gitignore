@@ -1,7 +1,4 @@
-# Files
-Resources/TMDB_all_movies.csv
 .DS_Store
-
 
 # Environments
 .env
