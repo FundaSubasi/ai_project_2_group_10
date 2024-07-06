@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+# Files
+Resources/TMDB_all_movies.csv
 .DS_Store
 
+
+=======
+.DS_Store
+
+>>>>>>> main
 # Environments
 .env
 .venv
