@@ -24,14 +24,15 @@ A data analysis class project for Columbia University's AI bootcamp.
 * [Conclusions](#Conclusions)
 * [References/Footnotes](#References/Footnotes)
 
-## Abstract
+## Abstract - Eric
 
 ### Project Details
 
 * Objective: 
 
-
 * **Thesis/Hypothesis**: Are movies more profitable in a depressed economy? Are movies recessionproof?
+
+Are people more inclined to spend money for movies during hard economic times.
 
 
 ---
@@ -71,7 +72,7 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 
 ---
 
-## Methods 
+## Methods - Vadim
 
 * Linear Regression
 
@@ -81,7 +82,7 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 
 * Random Forest
 
-## Results
+## Results - Kalvin
 
 ### Findings
 * Linear Regression
@@ -94,12 +95,44 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 
 ### Lingering Questions
 ___
-## Limitations
+## Limitations - Team
 
 **Datasets:** Assumption "Revenue" feature in the TMDB Movies Dataset included streaming. Assumption "CCI, CPI, & Unemployment" are appropriate metrics for economic climate.
 
+Consolidate more data / consult with a economist
 
-## Conclusion
+## Conclusion - Team
+
+Based on annual analysis between the years of 1981 and 2023, the results indicate no clear relationshp between a movie's ROI and the economy's consumer confidence index, price index, and unemployment based on annual metrics.
+
+We were hoping data would show that in bad economic times people are more likely to spend money to see on movies as a form of escapism. 
+
+Target variable (reel_economy) is a concatenation of three different classes: critical success(Ratings ), financial success (ROI), and economic indicators(CCI,CPI,& UR)
+
+|  Ratings | Critical Success|
+| :--- | :--- |
+| 0 - 2.4  | Panned    |
+| 2.5 - 4.9 | Alright   |
+| 5 - 7.4 | Well Liked   |
+| 7.5 - 10 | Success   |
+
+|  ROI (%) | Financial Success|
+| :--- | :--- |
+|  < 0  | Failure    |
+| <= 50| Modest Returns  |
+| <= 100 | Moderate Returns   |
+| <= 500 | Excellent Returns |
+| > 500 | Extraordinary Returns   |
+
+|  CCI, CPI, UR | Economic Success|
+| :--- | :--- |
+|    | Comfortable to Good    |
+| | Lean to Bad  |
+
+
+Our models can provide the following business insights for a movie producer:
+Predicting the ROI and determining the optimal time for movie releases (Economic climate is a kep part of the timing).
+
 
 
 ## References/Footnotes
