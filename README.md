@@ -85,17 +85,19 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 ## Results - Kalvin
 
 ### Findings
-* Linear Regression
+* Linear Regression: Selection of this model was based on relationship between the numerical response and one or more variables that explain the response. The numerical response or target variable we chose was ROI, however achieving a MSE = .0262 and R2 score = -.0086. While the MSE value is relatively small, R2 score is the statistical measure representing how well the model fits the data. A slightly negative R2 score suggests model our model is not fitting the data and performing worse than simply using the mean of the ROI as a prediction. The results of this model guide of selection subsequent models better equipped for handling nonlinear patterns and trends.
 
-* Logistic Regression
+* K-Nearest Neighbor (KNN): In implementing the KNN to compare data points to determine the classfication of our target variable, we utilized a several variations of the model. First, we tested an untuned model which achieved an accuracy score of .65 and and a precision score of .62. Next, we tested the untuned model using PCA to reduce the dimensionality of the data, however the untuned model yielded an even lower accuracy score = .62 and a precision score = .59. To the tune the KNN classfier, we had the model loop 
+through different k-values to find wich had the highest accuracy. The optimal k-value was 23, which yielded an similar accuracy score = .65 and slightly lower precision score =.60. Lastly, we hyperparameter tuned the KNN classifier using `GridSearchCV model` which yield k-value equal to 1 with the lowest accuracy score of .578
 
-* K-Nearest Neighbor (KNN)
+* Logistic Regression: This model was chosen to explore discrete variables instead of nominal variable like ROI. We featured engineered a target variable the contained difference classes of movie's success based on Raings, ROI, and certain economic indicators. As a statistical method for predicting binary outcomes, the Logistic Regression model achieved an accuracy score = .78 and precision score = .79 when it came to predicting the classification of target variable.
 
-* Random Forest
+* Random Forest: The accuracy and precision scores of the Logistic Regression model indicate the Random Forest model should be tested due to it being robust to outliers and nonlinear data. This model achieved an accuracy = .80 and precision = .84 illustrating it's success with large datasets and handling thousand of input variables by ranking importance in a natural way.
+
+___
+## Future Considerations - Team
 
 ### Lingering Questions
-___
-## Limitations - Team
 
 **Datasets:** Assumption "Revenue" feature in the TMDB Movies Dataset included streaming. Assumption "CCI, CPI, & Unemployment" are appropriate metrics for economic climate.
 
