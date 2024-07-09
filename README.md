@@ -65,7 +65,63 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 | Modeling & Tuning |  Utilized dictionarys, list, loops, column slicing, string manipulation, to ensure high quality and structured data is visualized and fed into the models for linear regression predictions and classification   |
 
 ---
-## Methods 
+## Methods
+### Movie EDA & Preprocessing
+* Numerous factors contribue to the successes and failures within the film industry, both on critical and financial scales. Using a simplified view to focus on more generalized classifications, as well as to meet the         puposes of our modelling, several contributing factors were chosen to highlight and predict each scale of success within our selected dataset. The features ultimately chosen were:
+  * Vote Average (a given movie's rating from zero (0) to ten (10))
+  * Vote Count
+  * Revenue (total earnings in USD for a given movie)
+  * Runtime
+  * Budget (total expenses in USD to produce and promote a given movie)
+  * Title
+  * Original Title
+  * Genres
+  * Production Companies
+* To create our `critical_success` indicator - a classification as to how well recieved a title was by fans and critics - we focused on the `vote_average` or `ratings` feature to create guidelines for ranges of scores. With a rating scale of zero (0) to ten (10), ranges were established to break a given movie's critical success down by the following scale:
+  * **0 to 2.5**: `panned`
+  * **2.5 to 5**: `alright`
+  * **5 to 7.5**: `well liked`
+  * **7.5 to 10**: `critical success`
+* To engineer a `financial_success` indicator - a measure of what level of returns a title produced - we calculated the `ROI` as follows:
+  > ((`revenue`-`budget`)/`budget`) * 100
+  * The resulting value was compared to industry standard breakpoints to describe the folling classifications: 
+    * **Less than 0%**: `failure`
+    * **Exactly 0%**: `broke even`
+    * **Between 0% and 50%**: `modest returns`
+    * **Between 50% and 100%**: `moderate returns`
+    * **Between 100% and 500%**: `excellent returns`
+    * **Over 500%**: `extraordinary returns`
+    * *Note: For the purposes of our modeling, only records with a `budget` NOT equal to zero (0) were retained*
+    
+### Economic EDA & Preprocessing
+* To serve the purposes of our modeling, the following three factors were chosen to highlight the economic status at a given movie's release date:
+  * Consumer Confidence Indicator (CCI)
+  * Consumer Price Index (CPI)
+  * Unemployment Rate
+
+* These data features provided adequate answers to following three questions:
+  * How likely are people to be spending money?
+  * How much do things cost when they do spend money?
+  * How many people have jobs to earn money to spend?
+ 
+* The for features were provided as monthly measures over several decades. To create our `Economic Climate` indicator - a classification as to whether or not the economics of a given time were on the better side for         consumers - we calculated a rolling 12-month percent change in the mean of those monthly values in order to show if a given feature was on a positive or negative trend for the provided period.
+  * CCI is an indication of developments for future households' consumption and saving based on expected financial situation, sentiment regarding the general economic situation, employment status, and capacity for         savings:
+      * An indicator above `100` indicates an optimistic outlook and a greater likliehood to spend money over cautious saving
+      * An indicator below `100` indicates a pessimistic outlook and both a higher likeliehood to save money and a lower tendency to consume
+  * CPI is a critical economic indicator for measuring the purchasing power of money over time, measuring the average change over time in the prices paid by urban consumers for goods and services
+      * The CPI is the value at the end of the respective month
+  * Unemployment is the share of the labor force wihout a job
+        * Monthly percentages calculated as a rolling 12-month average (mean)
+
+* Economic Climate - Having calculated the rolling 12-month percent change for each feature - based off the rolling 12-month mean - we identified positive or negative change in values and flag the movement accordingly. From there, we made the following simple statements
+  * For **CCI**, a positive change is "good", as it indicates an increase in the likelihood of consumers to spend money
+  * For **CPI**, a negative change is "good", as it indicates a decrease in the costs for goods and services
+  * For **Unemployment Rate**, a negative change is "good", as it indicates an incrase in the population active in the workforce
+
+* Interpretation: we can interpret movement contrary to those changes as "bad". With this simplified view of the features, we can draw a classification as follows*     
+  * If **at least two (2) features** have a "good" value, we can set `Economic Climate` to `Comfortable to Good`
+  * If **at least two (2) features** have a "bad" value, we can set `Economic Climate` to `Lean to Bad`
+  * *This was used to gauge whether the ecnomic state at a given rlease date supports or disproves our hypothesis.*
 
 * Linear Regression vs Logistic Regression 
   * Linear Regression is a method used in machine learning to predict a continuous outcome based on one or more input features. It works by finding the best-fit line that represents the relationship between the inputs and the output. This line is determined so that it minimizes the difference between the actual and predicted values. Essentially, Linear Regression helps in understanding and modeling how changes in the input variables affect the output variable, providing a straightforward way to make predictions.
@@ -115,8 +171,32 @@ ___
 
 * Our linear regression analysis of the movie industry between the years of 1981 and 2023, based on the relationship between a continuous dependent variable and key independent features in the dataset resulted in the conclusion that there was no clear correlation between a movie's ROI (the continuous dependent variable) and the following key independent features: consumer confidence index (CCI), consumer price index (CPI), and unemployment rate (UR). This was further supported by a Linear Regression R2 score = -.0086.
 
+* Although no strong correlation seems to exist among the features used to create our `Success Conditions or Indicators`, visualizations do indicate there are certain genres that perform drastically better in a `Lean to Bad` `Economic Climate`. Ultimately our hypothesis may be null, but our EDA and modeling proved well enough that further investigation may uncover more concrete findings.
+
 * Our predictive classification analysis of the movie industry during the same window of time, but based on the categorization of a movie's Success Conditions resulted in a Random Forest accuracy = .80 and precision = .83. The classes or conditions of success created by combining movie ratings, ROI, CCI, CPI, & UR provided an economic snapshot of a movie's performance. This snapshot provides valuable insight for investors and movie producer when determing the optimal time for a movie release.
 
+Based on our modelling, `LinearRegression()` and `AdaBoostClassifier` showed the poorest overall performance, while `DecisionTreeClassifier()` seemed to be overfitted to an extreme degree. Overall, `RandomForestClassifier()` showed the most promise for accurate and precise predictions for our `Success Indicator`.
 
 
-## References/Footnotes
+
+## Citations & Licenses
+### Citations
+#### **Unemployment.csv**
+
+Economic Policy Institute, *State of Working America Data Library*, “Unemployment”, 2024
+
+### Licenses
+#### **TMBD_all_movies.csv**
+
+Copyright 2024 __[Alan Vourc'h](https://www.kaggle.com/alanvourch)__
+
+Licensed under the Apache License, Version 2.0 (the "License");
+You may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+> __http://www.apache.org/licenses/LICENSE-2.0__
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+#### **CCI_OECD.csv** and **US_inflation_rates.csv**
+
+CCO: Public Domain
