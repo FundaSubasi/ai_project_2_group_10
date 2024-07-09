@@ -123,11 +123,6 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
   * If **at least two (2) features** have a "bad" value, we can set `Economic Climate` to `Lean to Bad`
   * *This was used to gauge whether the ecnomic state at a given rlease date supports or disproves our hypothesis.*
  
-<div align='center'>
-    <img src='' height='300' title='' alt=''/>
-    <p>Correlation Matrix</p>
-</div>
- 
 ### Combining Data, Target Engineering, & Feature Selection
 * A combined dataset was created for modeling based off the `df_movies` and `df_economics`. The `df_movies` dataset was set to a `Date` index, and the year and month were extracted from the `Date` of the `df_economics` dataset
 
@@ -142,6 +137,16 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 
 ### Genre Aggregation
 * Given the absence of strong correlations based on the correlation matrix, further exploration through visualizations was beneficial observe any interesting connections between genres and economic climate. When selecting the subset for plotting, aggregations were based on the `mean()` of `roi` and `sum()` of `revenue()` grouped by `genres`, `Economic Climate`, and then both.
+
+<div align='center'>
+    <img src='Resources/images/Mean_ROI_by_Ecnomoic_Climate.png' height='300' title='Mean_ROI_by_Ecnomoic_Climate' alt='Mean_ROI_by_Ecnomoic_Climate'/>
+    <p>Mean_ROI_by_Ecnomoic_Climate</p>
+</div>
+
+<div align='center'>
+    <img src='Resources/images/Mean_ROI_by_Ecnomoic_Climate.png' height='300' title='Mean_ROI_by_Ecnomoic_Climate' alt='Mean_ROI_by_Ecnomoic_Climate'/>
+    <p>Mean_ROI_by_Ecnomoic_Climate</p>
+</div>
 
 * `mean()` of `roi` grouped by `genres`
 
