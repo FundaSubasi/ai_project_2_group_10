@@ -4,7 +4,7 @@ A data analysis class project for Columbia University's AI bootcamp.
 ## Reel Returns: Machine Learning Insights into Movie Profitability
 
 <div align='center'>
-    <img src='' height='300' title='AI Jobs'(image courtesy of Pexels) alt='Image of movie reels with popcorn'/>
+    <img src='Resources/images/reels.jpg'  height='600' title='AI Jobs'(image courtesy of Pexels) alt='Image of movie reels with popcorn'/>
 </div>
 
 ## Project Team Members:
@@ -122,7 +122,56 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
   * If **at least two (2) features** have a "good" value, we can set `Economic Climate` to `Comfortable to Good`
   * If **at least two (2) features** have a "bad" value, we can set `Economic Climate` to `Lean to Bad`
   * *This was used to gauge whether the ecnomic state at a given rlease date supports or disproves our hypothesis.*
+ 
+<div align='center'>
+    <img src='' height='300' title='' alt=''/>
+    <p>Correlation Matrix</p>
+</div>
+ 
+### Combining Data, Target Engineering, & Feature Selection
+* A combined dataset was created for modeling based off the `df_movies` and `df_economics`. The `df_movies` dataset was set to a `Date` index, and the year and month were extracted from the `Date` of the `df_economics` dataset
 
+* The target variable in the dataset was created by concatenating the two engineered target values from the `df_movies` dataset with the engineered target from the `df_economics` dataset
+
+* Feature Selection inclued dropping uneeded features, removing `NaN` records, analyzing feature correlation and selecting the `Genres` column for aggregate analysis.
+
+<div align='center'>
+    <img src='Resources/images/correlation_matrix.png' height='300' title='Correlation Matrix' alt='Correlation Matrix'/>
+    <p>Correlation Matrix</p>
+</div>
+
+### Genre Aggregation
+* Given the absence of strong correlations based on the correlation matrix, further exploration through visualizations was beneficial observe any interesting connections between genres and economic climate. When selecting the subset for plotting, aggregations were based on the `mean()` of `roi` and `sum()` of `revenue()` grouped by `genres`, `Economic Climate`, and then both.
+
+* `mean()` of `roi` grouped by `genres`
+
+<div align='center'>
+    <img src='Resources/images/Mean_ROI_by_Genre_Top_6.png' height='300' title='Mean_ROI_by_Genre_Top_6' alt='Mean_ROI_by_Genre_Top_6'/>
+    <p>Mean_ROI_by_Genre_Top_6</p>
+</div>
+
+<div align='center'>
+    <img src='Resources/images/Mean_ROI_by_Genre_Top_6_no_TV.png' height='300' title='Mean_ROI_by_Genre_Top_6_no_TV.png' alt='Mean_ROI_by_Genre_Top_6_no_TV.png'/>
+    <p>Mean_ROI_by_Genre_Top_6</p>
+</div>
+
+<div align='center'>
+    <img src='Resources/images/Mean_ROI_by_Genre_Bottom_5.png' height='300' title='Mean_ROI_by_Genre_Bottom_5.png' alt='Mean_ROI_by_Genre_Bottom_5.png'/>
+    <p>Mean_ROI_by_Genre_Top_6</p>
+</div>
+
+* `mean()` of `roi` grouped by `Economic Climate` and  `genres`
+
+<div align='center'>
+    <img src='Resources/images/Mean_ROI_by_Ecnomoic_Climate_and_Genre_Top_5_Overall.png' height='300' title='Mean_ROI_by_Ecnomoic_Climate_and_Genre_Top_5_Overall' alt='Mean_ROI_by_Ecnomoic_Climate_and_Genre_Top_5_Overall'/>
+    <p>Mean_ROI_by_Genre_Top_6</p>
+</div>
+
+* `sum()` of `revenue` grouped by `genres`
+
+* `sum()` of `revenue` grouped by `Economic Climate` and  `genres`
+
+### Model Selections
 * Linear Regression vs Logistic Regression 
   * Linear Regression is a method used in machine learning to predict a continuous outcome based on one or more input features. It works by finding the best-fit line that represents the relationship between the inputs and the output. This line is determined so that it minimizes the difference between the actual and predicted values. Essentially, Linear Regression helps in understanding and modeling how changes in the input variables affect the output variable, providing a straightforward way to make predictions.
   * Logistic Regression is a machine learning algorithm used for binary classification tasks, where the goal is to predict one of two possible outcomes. Unlike Linear Regression, which predicts continuous values, Logistic Regression predicts the probability that a given input belongs to a certain class. It works by applying a logistic function (also known as the sigmoid function) to the linear combination of input features. This function maps the output to a value between 0 and 1, which can be interpreted as a probability. Based on this probability, the final classification decision is made, typically by setting a threshold (e.g., 0.5) to determine the class. Logistic Regression is widely used because of its simplicity, efficiency, and effectiveness for binary classification problems.
@@ -137,23 +186,23 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 ## Results
 * Linear Regression
 
-  Selection of this model was based on relationship between the numerical response and one or more variables that explain the response. The numerical response or target variable we chose was ROI, however achieving a MSE = .0262 and R2 score = -.0086. While the MSE value is relatively small, R2 score is the statistical measure representing how well the model fits the data. A slightly negative R2 score suggests  our model is not fitting the data and performing worse than simply using the mean of the ROI as a prediction. The results of this model guide our selection of subsequent models better equipped for handling classification predictions and nonlinear patterns and trends.
+Selection of this model was based on relationship between the numerical response and one or more variables that explain the response. The numerical response or target variable we chose was ROI, however it only achieved an R2 score = -.087. While the MSE value is relatively small, R2 score is the statistical measure representing how well the model fits the data. A slightly negative R2 score suggests  our model is not fitting the data and performing worse than simply using the mean of the ROI as a prediction. The results of this model guide our selection of subsequent models better equipped for handling classification predictions and nonlinear patterns and trends.
 
 * Logistic Regression
   
-  This model was chosen to explore the classification of discrete variables. We featured engineered a target variable the contained difference classes of movie's success based on Raings, ROI, and certain economic indicators. As a statistical method for predicting binary outcomes, the Logistic Regression model achieved an accuracy score = .78 and precision score = .79 when it came to predicting the classification of target variable. Similar to Linear Regression, Logistic Regression is based on a linear relationship but different given it is between the the independent variable and the log-odds or probablity score between 0 and 1 for classification within the dependent variable. The scores for this model demonstrated it's ability to handle categorical outcomes effectively on large sample sizes. Larger dataset are recommended for Logistic regression models it provides better stability, reliability, and generalizability of the models estimates. A key drawback being this model's sensitivity to imbalanced classes in our dataset leading to biased predictions.
+This model was chosen to explore the classification of discrete variables. We featured engineered a target variable the contained difference classes of movie's success based on Raings, ROI, and certain economic indicators. As a statistical method for predicting binary outcomes, the Logistic Regression model achieved an accuracy score = .78 and precision score = .79 when it came to predicting the classification of target variable. Similar to Linear Regression, Logistic Regression is based on a linear relationship but different given it is between the the independent variable and the log-odds or probablity score between 0 and 1 for classification within the dependent variable. The scores for this model demonstrated it's ability to handle categorical outcomes effectively on large sample sizes. Larger dataset are recommended for Logistic regression models it provides better stability, reliability, and generalizability of the models estimates. A key drawback being this model's sensitivity to imbalanced classes in our dataset leading to biased predictions.
 
 * K-Nearest Neighbor (KNN)
   
-  In implementing the KNN to compare data points to determine the classfication of our target variable, we utilized a several variations of the model. First, we tested an untuned model which achieved an accuracy score of .65 and and a precision score of .62. Next, we tested the untuned model using PCA to reduce the dimensionality of the data, however the untuned model yielded an even lower accuracy score = .62 and a precision score = .59. To the tune the KNN classfier, we had the model loop through different k-values to find wich had the highest accuracy. The optimal k-value was 23, which yielded an similar accuracy score = .65 and slightly lower precision score =.60. Lastly, we hyperparameter tuned the KNN classifier using `GridSearchCV model` which yield k-value equal to 1 with the lowest accuracy score of .58. The lower scores of this model can attributed to the "Curse of Dimensionality" with causes the algorithm to perform poorly with high-dimensional data due to the distances between data points becoming less meaningful.
+In implementing the KNN to compare data points to determine the classfication of our target variable, we utilized a several variations of the model. First, we tested an untuned model which achieved an accuracy score of .65 and and a precision score of .62. Next, we tested the untuned model using PCA to reduce the dimensionality of the data, however the untuned model yielded an even lower accuracy score = .62 and a precision score = .59. To the tune the KNN classfier, we had the model loop through different k-values to find wich had the highest accuracy. The optimal k-value was 23, which yielded an similar accuracy score = .65 and slightly lower precision score =.60. Lastly, we hyperparameter tuned the KNN classifier using `GridSearchCV model` which yield k-value equal to 1 with the lowest accuracy score of .58. The lower scores of this model can attributed to the "Curse of Dimensionality" with causes the algorithm to perform poorly with high-dimensional data due to the distances between data points becoming less meaningful.
 
 * Random Forest 
   
-  The accuracy and precision scores of the Logistic Regression model indicate the Random Forest model should be tested due to it being robust to outliers and nonlinear data. Random Forest utilized a bagging technique by training multiple models independently and then combining their predictions into a final predictions. This model achieved an accuracy = .80 and precision = .83 illustrating it's success with large datasets and handling thousand of input variables by ranking importance in a natural way.
+The accuracy and precision scores of the Logistic Regression model indicate the Random Forest model should be tested due to it being robust to outliers and nonlinear data. Random Forest utilized a bagging technique by training multiple models independently and then combining their predictions into a final predictions. This model achieved an accuracy = .80 and precision = .83 illustrating it's success with large datasets and handling thousand of input variables by ranking importance in a natural way.
 
 * AdaBoost
 
-  We selected AdaBoost to test another ensemble learning model, but instead evaluate the boosting method. Boosting is technique where a strong learning model is created by increasing the weights of samples misclassified by multiple weak learner so the get more get more attention in the subsequent iterations. We tested this model, intially designed for binary classification on high dimensional dataset test is the "Sensitivity to Noisy Data" and achieved an accuracy = .37 and precision = .17. This scores were attributed to the models technique of increasing the weight of misclassification, while not accounting for those misclassifications being caused by noisy dataset.
+We selected AdaBoost to test another ensemble learning model, but instead evaluate the boosting method. Boosting is technique where a strong learning model is created by increasing the weights of samples misclassified by multiple weak learner so the get more get more attention in the subsequent iterations. We tested this model, intially designed for binary classification on high dimensional dataset test is the "Sensitivity to Noisy Data" and achieved an accuracy = .37 and precision = .17. This scores were attributed to the models technique of increasing the weight of misclassification, while not accounting for those misclassifications being caused by noisy dataset.
 
 * Decision Tree
 
