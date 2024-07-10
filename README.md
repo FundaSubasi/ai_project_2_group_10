@@ -144,8 +144,8 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 </div>
 
 <div align='center'>
-    <img src='Resources/images/Mean_ROI_by_Ecnomoic_Climate.png' height='300' title='Mean_ROI_by_Ecnomoic_Climate' alt='Mean_ROI_by_Ecnomoic_Climate'/>
-    <p>Mean_ROI_by_Ecnomoic_Climate</p>
+    <img src='Resources/images/Total_Rev_Eco_Climate.png' height='300' title='Total_Rev_Eco_Climate alt='Total_Rev_Eco_Climate'/>
+    <p>Total_Rev_Eco_Climate'</p>
 </div>
 
 * `mean()` of `roi` grouped by `genres`
@@ -156,25 +156,38 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 </div>
 
 <div align='center'>
-    <img src='Resources/images/Mean_ROI_by_Genre_Top_6_no_TV.png' height='300' title='Mean_ROI_by_Genre_Top_6_no_TV.png' alt='Mean_ROI_by_Genre_Top_6_no_TV.png'/>
-    <p>Mean_ROI_by_Genre_Top_6</p>
+    <img src='Resources/images/Mean_ROI_by_Genre_Top_6_no_TV.png' height='300' title='Mean_ROI_by_Genre_Top_6_no_TV' alt='Mean_ROI_by_Genre_Top_6_no_TV'/>
+    <p>Mean_ROI_by_Genre_Top_6_no_TV</p>
 </div>
 
 <div align='center'>
-    <img src='Resources/images/Mean_ROI_by_Genre_Bottom_5.png' height='300' title='Mean_ROI_by_Genre_Bottom_5.png' alt='Mean_ROI_by_Genre_Bottom_5.png'/>
-    <p>Mean_ROI_by_Genre_Top_6</p>
+    <img src='Resources/images/Mean_ROI_by_Genre_Bottom_5.png' height='300' title='Mean_ROI_by_Genre_Bottom_5.png' alt='Mean_ROI_by_Genre_Bottom_5'/>
+    <p>Mean_ROI_by_Genre_Bottom_5</p>
 </div>
 
 * `mean()` of `roi` grouped by `Economic Climate` and  `genres`
 
 <div align='center'>
     <img src='Resources/images/Mean_ROI_by_Ecnomoic_Climate_and_Genre_Top_5_Overall.png' height='300' title='Mean_ROI_by_Ecnomoic_Climate_and_Genre_Top_5_Overall' alt='Mean_ROI_by_Ecnomoic_Climate_and_Genre_Top_5_Overall'/>
-    <p>Mean_ROI_by_Genre_Top_6</p>
+    <p>Mean_ROI_by_Ecnomoic_Climate_and_Genre_Top_5_Overall</p>
 </div>
 
-* `sum()` of `revenue` grouped by `genres`
+<div align='center'>
+    <img src='Resources/images/Mean_ROI_by_Ecnomoic_Climate_and_Genre_Bottom_5_Overall.png' height='300' title='Mean_ROI_by_Ecnomoic_Climate_and_Genre_Bottom_5' alt='Mean_ROI_by_Ecnomoic_Climate_and_Genre_Bottom_5'/>
+    <p>Mean_ROI_by_Ecnomoic_Climate_and_Genre_Bottom_5</p>
+</div>
 
 * `sum()` of `revenue` grouped by `Economic Climate` and  `genres`
+
+<div align='center'>
+    <img src='Resources/images/Sum_Revenue_by_Economic_Climate.png' height='300' title='Sum_Revenue_by_Economic_Climate' alt='Sum_Revenue_by_Economic_Climate'/>
+    <p>Sum_Revenue_by_Economic_Climate</p>
+</div>
+
+<div align='center'>
+    <img src='Resources/images/Sum_Revenue_by_Economic_Climate_Bottom_5_Overall.png' height='300' title='Sum_Revenue_by_Economic_Climate_Bottom_5_Overall' alt='Sum_Revenue_by_Economic_Climate_Bottom_5_Overall'/>
+    <p>Sum_Revenue_by_Economic_Climate_Bottom_5_Overall</p>
+</div>
 
 ### Model Selections
 * Linear Regression vs Logistic Regression 
