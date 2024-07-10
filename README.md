@@ -242,10 +242,6 @@ ___
 
 * Our predictive classification analysis of the movie industry during the same window of time, but based on the categorization of a movie's Success Conditions resulted in a Random Forest accuracy = .80 and precision = .83. The classes or conditions of success created by combining movie ratings, ROI, CCI, CPI, & UR provided an economic snapshot of a movie's performance. This snapshot provides valuable insight for investors and movie producer when determing the optimal time for a movie release.
 
-Based on our modelling, `LinearRegression()` and `AdaBoostClassifier` showed the poorest overall performance, while `DecisionTreeClassifier()` seemed to be overfitted to an extreme degree. Overall, `RandomForestClassifier()` showed the most promise for accurate and precise predictions for our `Success Indicator`.
-
-
-
 ## Citations & Licenses
 ### Citations
 #### **Unemployment.csv**
