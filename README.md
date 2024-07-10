@@ -224,7 +224,7 @@ We selected AdaBoost to test another ensemble learning model, but instead evalua
 
 * Decision Tree
 
-  Testing out the Decision Tree model provided a basis for how a flowchart-like algorithm would perform on our dataset. The model used nodes to split the data into subsets based on the most significant features, and repeated this process until reaching a certain stopping criterion like maximum depth or minimum samples. We achieved an accuracy and precision score = .99,illustrating another models sensitivity to a dataset set with imbalanced classes. As a result this models scores were most likely attributable to the model's tendency to make predictions towards a dominant class.
+Testing out the Decision Tree model provided a basis for how a flowchart-like algorithm would perform on our dataset. The model used nodes to split the data into subsets based on the most significant features, and repeated this process until reaching a certain stopping criterion like maximum depth or minimum samples. We achieved an accuracy and precision score = .99,illustrating another models sensitivity to a dataset set with imbalanced classes. As a result this models scores were most likely attributable to the model's tendency to make predictions towards a dominant class.
 ___
 ## Future Considerations
 
