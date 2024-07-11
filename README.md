@@ -128,6 +128,11 @@ https://www.kaggle.com/datasets/pavankrishnanarne/us-public-debt-quarterly-data-
 
 * The target variable in the dataset was created by concatenating the two engineered target values from the `df_movies` dataset with the engineered target from the `df_economics` dataset
 
+<div align='center'>
+    <img src='Resources/images/success_conditions.png' height='300' title='Success Conditions' alt='Success Conditions'/>
+    <p>Success Conditions</p>
+</div>
+
 * Feature Selection inclued dropping uneeded features, removing `NaN` records, analyzing feature correlation and selecting the `Genres` column for aggregate analysis.
 
 <div align='center'>
